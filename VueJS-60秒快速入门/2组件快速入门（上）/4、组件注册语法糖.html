@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+    <!--这是我们的View-->
+    <div id="app">
+         <my-component></my-component>
+    </div>
+</body>
+
+<script src="http://cdn.jsdelivr.net/vue/1.0.7/vue.min.js"></script>
+<script>
+    
+     // 全局注册，my-component1是标签名称
+     Vue.component('my-component',{
+        template:'<div>This is first component!</div>'
+     })
+
+     var vm=new Vue({
+        el:'#app'
+     })
+
+
+
+     //在选项对象的components属性中实现局部注册
+    var vm2 = new Vue({
+    el: '#app2',
+    components: {
+        // 局部注册，my-component2是标签名称
+        'my-component2': {
+            template: '<div>This is the second component!</div>'
+        },
+        // 局部注册，my-component3是标签名称
+        'my-component3': {
+            template: '<div>This is the third component!</div>'
+        }
+    }
+})
+</script>
