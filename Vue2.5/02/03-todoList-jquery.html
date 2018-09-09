@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" id="input"><button id="btn">提交</button>
+        <ul id="list"></ul>
+    </div>
+</body>
+<script type='text/javascript'>
+    function Page() {}
+
+    $.extend(Page.prototype,{
+        init:function(){
+            this.bindEvents()
+        },
+        bindEvents:function(){
+            var btn=$('#btn');
+            btn.on('click',$.proxy(this.handleBtnclick,this))
+        },
+        handleBtnclick:function(){
+            var inputElm=$("#input");
+            var inputValue=inputElm.val();
+            var ulElm=$("#list");
+            ulElm.append('<li>'+inputValue+'</li>');
+            inputElm.val('');
+        }
+    })
+
+    var page=new Page();
+    page.init();
+</script>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">{{content}}</div>
+</body>
+<script type='text/javascript'>
+    var  app=new Vue({
+        el:'#app',
+        data:{
+            content:'hello word'
+        }
+    })
+    setTimeout(() => {
+        app.$data.content='bye word'
+    }, 3000);
+</script>
+</html>
