@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<div id="app">
+    <input type="text" v-model="inputValue"><button @click="clickButton">提交</button>
+    <todo-item :content="item" :index="index" @delete="clickDelete"
+    v-for="(item,index) in list"></todo-item>
+</div>
+<body>
+    
+</body>
+<script type='text/javascript'>
+// var TodoItem={
+//     props:["content","index"],
+//     template:"<li @click='deleteItem'>{{content}}</li>",
+//     methods:{
+//         deleteItem:function(){
+//             this.$emit('delete',this.index)
+//         }
+//     }
+// }
+
+
+//可以用组件化的方式去写
+vue.component('TodoItem',{
+    template:"<li @click='deleteItem'>{{content}}</li>",
+    methods:{
+        deleteItem:function(){
+            this.$emit('delete',this.index)
+        }
+    }
+})
+    var vue=new Vue({
+        el:"#app",
+        // components:{
+        //     TodoItem:TodoItem
+        // },
+        data:{
+            list:[],
+            inputValue:""
+        },
+        methods:{
+            clickButton:function(){
+                this.list.push(this.inputValue)
+                this.inputValue=""
+            },
+            clickDelete:function(index){
+                this.list.splice(index,1)
+            }}
+    })
+</script>
+
+</html>

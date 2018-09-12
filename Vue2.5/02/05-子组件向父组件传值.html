@@ -12,7 +12,7 @@
         <todo-item v-bind:content="item" 
                     v-bind:index="index"  
                    v-for='(item,index) in list'
-                   @delete="handleItemDelete">
+                   @delete="deleteItem">
         </todo-item>
     </div>
 </body>
@@ -36,7 +36,7 @@
         }
     }
     var  app=new Vue({
-        el:'#app',
+        el:'#app', 
         components:{
            TodoItem:TodoItem
         },
@@ -49,10 +49,7 @@
                this.list.push(this.inputValue)
                this.inputValue=''
             },
-            delete:function(){
-                this.list=''
-            },
-            handleItemDelete:function(index){
+            deleteItem:function(index){
                 this.list.splice(index,1)
             }
         }

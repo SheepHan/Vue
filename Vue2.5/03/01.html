@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <title>vue实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<div id="root">
+    <div @click='handleClick'>
+        {{message}}
+    </div>
+    <item></item>
+</div>
+
+<body>
+
+</body>
+<script type='text/javascript'>
+    Vue.component('item', {
+        template: "<div>hello zujian</div>"
+    })
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            message: "Hello Word"
+        },
+        methods: {
+            handleClick: function () {
+                alert("hello")
+            }
+        }
+
+    })
+</script>
+
+</html>
+
+//vue每个组件就是一个Vue实例，每个实例上有很多方法和属性
+//在console中
+// vm.$data
+// vm.$el
+// vm.$destroy()  销毁vue实例

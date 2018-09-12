@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<div id="root">
+    {{message}}
+</div>
+
+<body>
+
+</body>
+<script type='text/javascript'>
+    //生命周期函数就是vue实例在某一个时间点会自动执行的函数
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            message: "Hello Word"
+        },
+       beforeCreate:function(){
+           console.log("beforeCreate")
+       },
+       created:function(){
+           console.log("created")
+       },
+       beforeMount:function(){
+           console.log("beforeMount")
+       },
+       mounted:function(){
+           console.log("mounted")
+       },
+
+       //vm.message="hah"后才运行
+       //vm.$data.message="h123" 这样赋值也可以
+       beforeUpdate:function(){
+           console.log("beforeUpdate")
+       },
+       updated:function(){
+           console.log("updated")
+       },
+
+       //vm.$destroy()后才运行
+       beforeDestroy:function(){ 
+           console.log("beforeDestroy")
+       },
+       destroyed:function(){
+           console.log("destroyed")
+       }
+
+    })
+</script>
+
+</html>
