@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        {{fullName}}
+    </div>
+</body>
+<script type='text/javascript'>
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            firstName: "Dell",
+            lastName: "Lee",
+            age: "19"
+        },
+
+        computed: {
+            fullName: {
+                get: function () {
+                    return this.firstName + " " + this.lastName
+                },
+                set:function(value){
+                    // console.log("打印出了value："+value)
+                    var  arr=value.split(" ")
+                    this.firstName=arr[0]
+                    this.lastName=arr[1]
+
+                }
+            }
+        }
+
+
+    })
+</script>
+
+</html>

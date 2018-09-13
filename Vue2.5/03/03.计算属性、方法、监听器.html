@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        {{fullName}}
+    </div>
+</body>
+<script type='text/javascript'>
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            firstName: "Dell",
+            lastName: "Lee",
+            fullName:"Dell Lee",
+            age: "19"
+        },
+
+        //对比watch   方法    computed  三者后，简易程度是computed>watch>方法   一个问题在可以watch和computed之间，当然选择computed计算
+
+        //①watch 也是类似computed进行缓存，仅当自己监听的数据出现变化时候才进行重新计算和更新。不然直接缓存读取。
+        watch:{
+            firstName:function(){
+                console.log("计算了一次")
+                return this.fullName=this.firstName+this.lastName;
+            },
+            lasttName:function(){
+                console.log("计算了一次")
+                return this.fullName=this.firstName+this.lastName;
+            }
+        }
+
+        //②方法：每次需要重新渲染时候，都需要计算
+        // methods:{
+        //     fullName:function(){
+        //    console.log("计算了一次")
+        //         return this.firstName+' '+this.lastName
+        //     }
+        // }
+
+        // //③计算属性
+        // //计算属性，重要特点是：内置缓存，使用缓存机制对依赖的属性进行存储，当依赖的属性的值没有变化时候，每次渲染都是直接从缓存读取，而不需要重新computed。
+        // //当依赖的值变化时候，需要重新computed
+        // computed: {
+        //     fullName: function () {
+        //         console.log("计算了一次")
+        //         return this.firstName + " " + this.lastName
+        //     }
+        // }
+
+
+    })
+</script>
+
+</html>
