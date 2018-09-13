@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- <div v-if="show==='a'">{{message}}</div>
+        <div v-else-if="show==='b'">B</div>
+        <div v-else>其他</div> -->
+        <div  v-show="show">{{message}}</div>
+    </div>
+</body>
+<script type='text/javascript'>
+
+//v-if类似if else的使用
+//v-show  等同于display=none/block   
+//v-if   v-show  相对比 优先推荐v-show  因为性能更好，不需要频繁渲染
+    var vm = new Vue({
+        el: "#root",
+        data: {
+           message:"A",
+           show:true
+        },
+
+        methods: {
+        }
+    })
+</script>
+
+</html>
