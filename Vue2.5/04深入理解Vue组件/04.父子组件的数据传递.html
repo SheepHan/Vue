@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <counter :count="1" @change="total"></counter>
+        <counter :count="2" @change="total"></counter>
+        <div>{{totalNum}}</div>
+    </div>
+</body>
+<script type='text/javascript'>
+    //在vue中，『父组件向子组件传值』都是通过属性的方式传递的,并且是『单向数据流』
+    //并且在父组件向子组件传值过程中，都是单向传递的。即『单向数据流』。只能父亲传值给子组件用，不能在子组件中直接修改值。
+    //因为，父组件的值可能被多个子组件引用，如果其中一个子组件可以直接修改，那会影响其他子组件的正常读取父组件的值
+    //可以在子组件中通过data属性克隆父组件传过来的值，然后在子组件中对data的值进行修改即可
+
+    //『子组件向父组件传值』,通过事件绑定的方式进行传值
+    var counter = {
+        props: ['count'],
+        template: '<div @click="handleClick">{{num}}</div>',
+        data: function () {
+            return {
+                num: this.count
+            }
+        },
+        methods: {
+            handleClick: function () {
+                this.num++
+                this.$emit('change',1)
+            }
+        }
+    }
+    var vm = new Vue({
+        el: "#root",
+        components: {
+            counter: counter
+        },
+        data:{
+            totalNum:3
+        },
+        methods:{
+            total:function(step){
+                this.totalNum+=step;
+            }
+        }
+    })
+</script>
+
+</html>

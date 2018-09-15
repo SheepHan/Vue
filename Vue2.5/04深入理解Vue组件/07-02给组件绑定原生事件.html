@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <child content="123"  @click.native="handleClick"></child>
+    </div>
+</body>
+<script type='text/javascript'>
+
+//①子组件无法直接用原生方法，需要子组件上进行转换，即通过子组件的template上进行事件绑定，然后触发
+//子组件上的methods,通过$emit抛出，进而才能再View层直接使用定义方法，从而触发根组件的方法
+
+
+//②直接在子组件上原生方法后 native即可调用原生方法
+    Vue.component('child', {
+        props: {
+            content: String, //组件参数校验
+        },
+        template: '<div>{{content}}</div>',
+    })
+    var vm = new Vue({
+        el: "#root",
+        components: {
+
+        },
+        data: {
+
+        },
+        methods: {
+            handleClick:function(){
+                alert("父组件Click事件触发")
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <table>
+            <tr is="row"></tr>
+            <tr is="row"></tr>
+            <tr is="row"></tr>
+        </table>
+    </div>
+</body>
+<script type='text/javascript'>
+    // The "data" option should be a function 
+    // that returns a per-instance value in component definitions.
+    //子组件的data必须是函数，且必须返回一个对象。   
+    //区别于根组件：根组件的data是一个对象 
+    Vue.component("row", {
+        data: function () {
+            return {
+                content: "this is row"
+            }
+        },
+        template: "<tr><td>{{content}}</td></tr>"
+    })
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            message: "A",
+            show: 'a'
+        },
+        methods: {}
+    })
+</script>
+
+</html>

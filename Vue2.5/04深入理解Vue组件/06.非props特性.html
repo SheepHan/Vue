@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <child content="123"></child>
+    </div>
+</body>
+<script type='text/javascript'>
+    //props特性和非props特性：
+    //props特性：
+    // ①子组件中必须声明接受的值
+    // ②DOM结构中不会显示属性
+
+    // 非props属性：（本质上类似H5自定义属性）
+    // ①子组件中无需声明接受的值
+    // ②DOM结构中会显示其属性
+
+    Vue.component('child', {
+        props: {
+            content: String, //组件参数校验
+        },
+        template: '<div>{{content}}</div>'
+    })
+    var vm = new Vue({
+        el: "#root",
+        components: {
+
+        },
+        data: {
+
+        },
+        methods: {
+
+        }
+    })
+</script>
+
+</html>

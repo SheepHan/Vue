@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- <child content="123"></child> -->
+        <child></child>
+    </div>
+</body>
+<script type='text/javascript'>
+    Vue.component('child', {
+        props: {
+            //content:String , //组件参数校验
+            //content:[String,Number] //可以是字符串或者数字
+            content:{
+                type:String,
+                required:false, //子组件开始可以不赋值
+                default:"default value" , //当子组件开始没有值的时候，默认值是这个
+                validator:function(value){ //自定义校验器：当子组件的传递的值长度>5时候，才返回true
+                    return (value.length>5)
+                }
+            }
+        },
+        template: '<div>{{content}}</div>'
+    })
+    var vm = new Vue({
+        el: "#root",
+        components: {
+
+        },
+        data: {
+
+        },
+        methods: {
+
+        }
+    })
+</script>
+
+</html>
