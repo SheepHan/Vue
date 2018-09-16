@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <title>具名插槽</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <child>
+            <div class="header" slot="header">header</div>
+            <div class="footer" slot="footer">footer</div>
+        </child>
+    </div>
+</body>
+<script type='text/javascript'>
+    Vue.component('child', {
+        props: {
+            content: String,
+        },
+        template: `<div>
+                        <slot name='header'></slot>
+                        <div>Hello Content</div>
+                        <slot name='footer'></slot>
+                 </div>`
+    })
+    var vm = new Vue({
+        el: "#root",
+        components: {
+
+        },
+        data: {
+
+        },
+    })
+</script>
+
+</html>

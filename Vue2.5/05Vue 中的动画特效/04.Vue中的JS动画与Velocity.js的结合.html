@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Vue中的JS动画与Velocity.js的结合</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="./velocity.min.js"></script>
+    <link rel="stylesheet" href="./animate.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <transition
+            @before-enter="handleBeforeEnter"
+            @Enter="handleEnter"
+            @after-enter="handleAfterEnter"
+        >
+            <div v-show="show">hello word</div>
+        </transition>
+        <button @click="handleClick">切换</button>
+    </div>
+</body>
+<script type='text/javascript'>
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            show: true
+        },
+        methods: {
+            handleClick: function () {
+                this.show = !this.show
+            },
+            handleBeforeEnter:function(el){
+                // console.log('beforeEnter')
+                // el.style.color='red'
+                el.style.opacity=0;
+            },
+            handleEnter:function(el,done){
+                // setTimeout(() => {
+                //    el.style.color='green' 
+                // //    done()//回调函数
+                // }, 2000);
+                // setTimeout(() => {
+                //    done() 
+                // }, 4000);
+                Velocity(el,{opacity:1},
+                        {
+                            duration:1000,
+                            complete:done
+                        })
+            },
+            handleAfterEnter:function(el){
+                // el.style.color="yellow"
+                console.log("动画结束")
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+        .v-enter,.v-leave-to{
+            opacity: 0;
+        }
+        .v-enter-active,.v-leave-active{
+            transition: opacity 3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <transition mode="out-in">
+            <div v-if="show"  key="hello">hello word</div>
+            <div v-else key="bye">Bye</div>
+        </transition>
+        <button @click="handleClick">切换</button>
+    </div>
+</body>
+<script type='text/javascript'>
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            show: true
+        },
+        methods: {
+            handleClick: function () {
+                this.show = !this.show
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <link rel="stylesheet" href="./animate.css">
+    <style>
+        /* @keyframes bounce-in{
+            0%{
+                transform: scale(0)
+            }
+            50%{
+                transform: scale(1.5)
+            }
+            100%{
+                transform: scale(1)
+            }
+        }
+        .enter-active,.leave-active{
+            transform-origin: left center;
+            animation: bounce-in 1s;
+        }
+        .leave-active{
+            animation: bounce-in 1s reverse;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- <transition enter-active-class="enter-active" leave-active-class="leave-active">
+            <div v-if="show">hello word</div>
+        </transition> -->
+        <transition enter-active-class="animated tada" leave-active-class="animated fadeOutDownBig">
+            <div v-if="show">hello word</div>
+        </transition>
+        <button @click="handleClick">切换</button>
+    </div>
+</body>
+<script type='text/javascript'>
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            show: true
+        },
+        methods: {
+            handleClick: function () {
+                this.show = !this.show
+            }
+        }
+    })
+</script>
+
+</html>

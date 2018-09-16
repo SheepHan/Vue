@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <link rel="stylesheet" href="./animate.css">
+    <style>
+        .v-enter,.v-leave-to{
+            opacity: 0;
+        }
+        .v-enter-active,.v-leave-active{
+            transition: opacity 3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+         <!-- animate.css的动画都是默认1S的，但是现在我们自定义的动画是3S，vue也搞不清以哪个时间为准，需要我们进行声明 -->
+         <!-- ：duration="1000" -->
+        <transition 
+                    type="transition" 
+                    appear
+                    enter-active-class="animated tada  v-enter-active" 
+                    leave-active-class="animated fadeOutDownBig v-leave-active"
+                    appear-active-class="animated swing"
+                    >
+            <div v-if="show">hello word</div>
+        </transition>
+        <button @click="handleClick">切换</button>
+    </div>
+</body>
+<script type='text/javascript'>
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            show: true
+        },
+        methods: {
+            handleClick: function () {
+                this.show = !this.show
+            }
+        }
+    })
+</script>
+
+</html>
