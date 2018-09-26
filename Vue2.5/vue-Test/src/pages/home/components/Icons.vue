@@ -107,6 +107,7 @@ export default {
   height: 0;
   padding-bottom: 50%;
   position :relative
+  margin-top: .1rem
   .icon {
     float: left;
     width: 25%;
