@@ -9,6 +9,7 @@
         <p>{{item.name}}</p>
         </div>
       </swiper-slide>
+      <div class="swiper-pagination-icons"  slot="pagination"></div>
     </swiper>
   </div>
 </template>
@@ -19,7 +20,7 @@ export default {
   data () {
     return {
       swiperOption: {
-        pagination: '.swiper-pagination',
+        pagination: '.swiper-pagination-icons',
         loop: true
       },
       IconList: [
@@ -65,8 +66,13 @@ export default {
         },
         {
           id: '009',
-          name: '测试',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png'
+          name: '上海迪士尼',
+          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/de/f26be47a6bf02a02.png'
+        },
+        {
+          id: '010',
+          name: '全部玩乐',
+          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/80/416c6ab3368d1f02.png'
         }
       ]
     }
@@ -90,18 +96,22 @@ export default {
 <style lang="stylus" scoped>
 @import '../../../assets/styles/varibles.styl';
 @import '../../../assets/styles/mixins.styl';
-
+.icons >>> .swiper-container
+   height: 0
+   padding-bottom: 50%
+.swiper-pagination-bullets
+  position:absolute
+  text-align :center
 .icons {
   overflow: hidden;
   height: 0;
   padding-bottom: 50%;
-
+  position :relative
   .icon {
     float: left;
     width: 25%;
     padding-bottom: 25%;
     position: relative;
-
     .icon-img {
       position: absolute;
       top: 0;

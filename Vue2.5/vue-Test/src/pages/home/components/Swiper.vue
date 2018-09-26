@@ -16,7 +16,9 @@ export default {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
-        loop: true
+        loop: true,
+        direction: 'horizontal',
+        autoplay: 3000
       },
       SwiperList: [{
         id: '001',
