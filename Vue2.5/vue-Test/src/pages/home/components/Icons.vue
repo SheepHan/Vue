@@ -6,7 +6,7 @@
         <div class="icon-img">
           <img :src="item.imgUrl" alt="">
         </div>
-        <p>{{item.name}}</p>
+        <p>{{item.desc}}</p>
         </div>
       </swiper-slide>
       <div class="swiper-pagination-icons"  slot="pagination"></div>
@@ -17,70 +17,22 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOption: {
         pagination: '.swiper-pagination-icons',
-        loop: true
-      },
-      IconList: [
-        {
-          id: '001',
-          name: '景点门票',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png'
-        },
-        {
-          id: '002',
-          name: '一日游',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png'
-        },
-        {
-          id: '003',
-          name: '上海必游',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png'
-        },
-        {
-          id: '004',
-          name: '游乐场',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/8246f27355943202.png'
-        },
-        {
-          id: '005',
-          name: '赏秋色',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/ea/01d081dacb03cc02.png'
-        },
-        {
-          id: '006',
-          name: '普陀山',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1805/57/1e29afd06f881102.png'
-        },
-        {
-          id: '007',
-          name: '上海欢乐谷',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/b1/528a9e80403b8c02.png'
-        },
-        {
-          id: '008',
-          name: '动物园',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png'
-        },
-        {
-          id: '009',
-          name: '上海迪士尼',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/de/f26be47a6bf02a02.png'
-        },
-        {
-          id: '010',
-          name: '全部玩乐',
-          imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/80/416c6ab3368d1f02.png'
-        }
-      ]
+        loop: false,
+        autoplay: false
+      }
     }
   },
   computed: {
     pages () {
       const pages = []
-      this.IconList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []
