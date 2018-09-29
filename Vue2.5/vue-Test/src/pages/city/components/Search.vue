@@ -1,27 +1,17 @@
 <template>
   <div>
     <div class="search">
-      <input v-model="keyword" class="search-input" type="text" placeholder="输入城市名或拼音" />
+      <input class="search-input" type="text" placeholder="输入城市名或拼音" />
     </div>
-    <div
-      class="search-content"
-      ref="search"
-      v-show="keyword"
-    >
+    <!-- <div class="search-content">
       <ul>
-        <li
-          class="search-item border-bottom"
-          v-for="item of list"
-          :key="item.id"
-          @click="handleCityClick(item.name)"
-        >
-          {{item.name}}
+        <li class="search-item border-bottom">
         </li>
-        <li class="search-item border-bottom" v-show="hasNoData">
+        <li class="search-item border-bottom">
           没有找到匹配数据
         </li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </template>
 

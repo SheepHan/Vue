@@ -15,7 +15,7 @@
   </ul>
 </template>
 
-<script>
+<script> 
 export default {
   name: 'CityAlphabet',
   props: {
