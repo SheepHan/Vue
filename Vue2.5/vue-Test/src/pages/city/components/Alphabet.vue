@@ -43,7 +43,7 @@ export default {
     handleTouchMove (e) {
       if (this.touchStatus) {
         // console.log(this.$refs)
-        const touchY = e.touches[0].clientY - this.$refs['A'][0].offsetTop - 79
+        const touchY = e.touches[0].clientY - this.$refs.item['0'].offsetTop - 79
         const index = Math.floor(touchY / 20)
         if (index >= 0 && this.letters.length) {
           this.$emit('change', this.letters[index])
