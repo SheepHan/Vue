@@ -21,7 +21,9 @@ export default {
   },
   data () {
     return {
-      touchStatus: false
+      touchStatus: false,
+      startY: 0,
+      timer: null
     }
   },
   computed: {
@@ -33,6 +35,9 @@ export default {
       return letters
     }
   },
+  updated () {
+    this.startY = this.$refs.item['0'].offsetTop
+  },
   methods: {
     handleClick (e) {
       this.$emit('change', e.target.innerText)
@@ -43,11 +48,17 @@ export default {
     handleTouchMove (e) {
       if (this.touchStatus) {
         // console.log(this.$refs)
-        const touchY = e.touches[0].clientY - this.$refs.item['0'].offsetTop - 79
-        const index = Math.floor(touchY / 20)
-        if (index >= 0 && this.letters.length) {
-          this.$emit('change', this.letters[index])
+        if (this.timer) {
+          clearTimeout(this.timer)
         }
+        // 使用定时器节流
+        this.timer = setTimeout(() => {
+          const touchY = e.touches[0].clientY - this.startY - 79
+          const index = Math.floor(touchY / 20)
+          if (index >= 0 && this.letters.length) {
+            this.$emit('change', this.letters[index])
+          }
+        }, 16)
       }
     },
     handleTouchEnd () {
