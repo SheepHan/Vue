@@ -12,5 +12,10 @@ export default new Vuex.Store({// 导出的是Vuex中的仓库
   //     ctx.commit('changeCity', city)
   //   }
   // },
-  mutations
+  mutations,
+  getters: { // 仅作为演示getters使用
+    doubleCities (state) {
+      return state.city + ' ' + state.city
+    }
+  }
 })
