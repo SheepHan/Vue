@@ -68,7 +68,7 @@ export default {
       this.changeCity(city)
       this.$router.push({path: '/'})
     },
-    ...mapMutations(['changeCity'])
+    ...mapMutations(['changeCity']) // 我的理解是mapMutations是通过Actions的commit控制Mutations的变化，所以应该写在methods中
   },
   mounted () {
     this.scroll = new BScroll(this.$refs.wrapper)
