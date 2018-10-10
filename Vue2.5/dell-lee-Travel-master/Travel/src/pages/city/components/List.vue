@@ -64,7 +64,7 @@ export default {
       this.changeCity(city)
       this.$router.push('/')
     },
-    ...mapMutations(['changeCity'])
+    
   },
   watch: {
     letter () {
