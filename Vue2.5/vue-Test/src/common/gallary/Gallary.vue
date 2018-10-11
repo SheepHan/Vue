@@ -2,15 +2,15 @@
   <div class="container">
     <div class="wrapper">
       <swiper :options="swiperOption">
-        <!-- slides -->
-        <swiper-slide>
-          <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg" alt="" style="opacity: 1;">
-        </swiper-slide>
-         <swiper-slide>
-          <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/1709/76/7691528bc7d7ad3ca3.img.png_800x800_9ef05ee7.png" alt="" style="opacity: 1;">
-        </swiper-slide>
+           <!-- slides -->
+          <swiper-slide>
+            <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg" alt="" style="opacity: 1;">
+          </swiper-slide>
+           <swiper-slide>
+            <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/1709/76/7691528bc7d7ad3ca3.img.png_800x800_9ef05ee7.png" alt="" style="opacity: 1;">
+          </swiper-slide>
         <!-- Optional controls -->
-        <div class="swiper-pagination"  slot="pagination"></div>
+        <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </div>
   </div>
@@ -28,9 +28,13 @@ export default {
   },
   data () {
     return {
-      swiperOptions: {
+      swiperOption: {
         pagination: '.swiper-pagination',
-        paginationType: 'fraction'
+        paginationType: 'fraction',
+        loop: true,
+        autoplay: 2000,
+        observer: true, // 修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true // 修改swiper的父元素时，自动初始化swiper
       }
     }
   },
@@ -40,6 +44,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  .container >>> .swiper-container
+    overflow: inherit
   .container
     display: flex
     position: fixed
@@ -49,7 +55,7 @@ export default {
     right: 0
     top: 0
     bottom: 0
-    z-index: 9
+    z-index: 99
     background: #000
     .wrapper
       height: 0
@@ -58,10 +64,6 @@ export default {
       .gallary-img
         width: 100%
       .swiper-pagination
-        color: #fff
         bottom: -1rem
-        left: 0
-        right : 0
-        height : .2rem
-        font-size: .24rem
+        color: #fff
 </style>
