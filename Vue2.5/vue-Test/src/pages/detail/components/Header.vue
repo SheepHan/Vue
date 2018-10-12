@@ -28,6 +28,7 @@ export default {
   methods: {
     handleScroll () {
       const top = document.documentElement.scrollTop
+      console.log(111)
       if (top > 60) {
         let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
@@ -49,20 +50,20 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
- @import '~styles/varibles.styl'
- .header-abs
+   @import '~styles/varibles.styl'
+  .header-abs
     position: absolute
     left: .2rem
     top: .2rem
     width: .8rem
     height: .8rem
     line-height: .8rem
-    border-radius: 50%
+    border-radius: .4rem
     text-align: center
     background: rgba(0, 0, 0, .8)
     .header-abs-back
-        color: #fff
-        font-size: .4rem
+      color: #fff
+      font-size: .4rem
   .header-fixed
     z-index: 2
     position: fixed
