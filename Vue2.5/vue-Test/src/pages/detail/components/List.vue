@@ -1,13 +1,46 @@
 <template>
   <div>
+    <div
+      class="item"
+      v-for="(item, index) in list"
+      :key = "index"
+    >
+      <div class="item-title border-bottom">
+        <span class="item-title-icon"></span>
+        {{item.title}}
+      </div>
+      <div class="item-children" v-if="item.children">
+        <!-- 递归组件  v-if就是判断数据存在子元素数据否？如果存在，就把item.children赋值给list,实现递归-->
+        <detail-list :list="item.children"></detail-list>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'DetailList'
+  name: 'DetailList',
+  props: {
+    list: Array
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
+  .item-title
+    line-height: .8rem
+    font-size: .32rem
+    padding: 0 .2rem
+  .item-title-icon
+    position: relative
+    left: .06rem
+    top: .06rem
+    display: inline-block
+    width: .36rem
+    height: .36rem
+    background: url(http://s.qunarzz.com/piao/image/touch/sight/detail.png) 0 -.45rem no-repeat
+    margin-right: .1rem
+    background-size: .4rem 3rem
+  .item-children
+    padding: 0 .2rem
 </style>
