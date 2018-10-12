@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="banner">
+    <div class="banner" @click="handleBannerClick">
       <img class="banner-img" src="http://img1.qunarzz.com/sight/p0/1502/ba/ba5f873a22327e0f.water.jpg_600x330_1d51e18a.jpg" />
       <div class="banner-info">
         <div class="banner-tittle">
@@ -13,7 +13,11 @@
       </div>
     </div>
     <div>
-      <common-gallary></common-gallary>
+      <common-gallary
+        :imgs="bannerImgs"
+        v-show="showGallary"
+        @close="handleGallaryClose"
+      ></common-gallary>
     </div>
   </div>
 </template>
@@ -26,10 +30,20 @@ export default {
   },
   data () {
     return {
+      bannerImgs: ['http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg', 'http://img1.qunarzz.com/sight/p0/1709/76/7691528bc7d7ad3ca3.img.png_800x800_9ef05ee7.png'],
+      showGallary: false
     }
   },
   components: {
     CommonGallary
+  },
+  methods: {
+    handleBannerClick () {
+      this.showGallary = true
+    },
+    handleGallaryClose () {
+      this.showGallary = false
+    }
   }
 }
 </script>

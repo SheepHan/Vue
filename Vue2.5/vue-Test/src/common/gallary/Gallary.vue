@@ -1,16 +1,13 @@
 <template>
-  <div class="container">
+  <div class="container" @click="handleGallaryClick">
     <div class="wrapper">
-      <swiper :options="swiperOption">
+      <swiper :options="swiperOptions">
            <!-- slides -->
-          <swiper-slide>
-            <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg" alt="" style="opacity: 1;">
+          <swiper-slide v-for='(item,index) in imgs' :key='index'>
+            <img class="gallary-img" :src='item' alt="" style="opacity: 1;">
           </swiper-slide>
-           <swiper-slide>
-            <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/1709/76/7691528bc7d7ad3ca3.img.png_800x800_9ef05ee7.png" alt="" style="opacity: 1;">
-          </swiper-slide>
-        <!-- Optional controls -->
-        <div class="swiper-pagination" slot="pagination"></div>
+          <!-- Optional controls -->
+          <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </div>
   </div>
@@ -23,12 +20,13 @@ export default {
     imgs: {
       type: Array,
       default () {
+        return []
       }
     }
   },
   data () {
     return {
-      swiperOption: {
+      swiperOptions: {
         pagination: '.swiper-pagination',
         paginationType: 'fraction',
         loop: true,
@@ -39,13 +37,16 @@ export default {
     }
   },
   methods: {
+    handleGallaryClick () {
+      this.$emit('close')
+    }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-  .container >>> .swiper-container
-    overflow: inherit
+  // .container >>> .swiper-container
+  //   overflow: inherit
   .container
     display: flex
     position: fixed
@@ -61,6 +62,8 @@ export default {
       height: 0
       width: 100%
       padding-bottom: 100%
+      .swiper-container
+        overflow: inherit // 可以用这种方式代替上面的
       .gallary-img
         width: 100%
       .swiper-pagination
