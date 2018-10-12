@@ -8,7 +8,7 @@
       v-show='!showAbs'
       :style='opacityStyle'
     >
-      <div class="iconfont header-fixed-back">&#xe624;</div>
+      <router-link tag="div" to="/" class="iconfont header-fixed-back">&#xe624;</router-link>
       股票详情
     </div>
   </div>
@@ -40,7 +40,7 @@ export default {
       }
     }
   },
-  // activated () { // 由于该组件使用了 exclude ，不再在keep-alive中被包含，所以没有了activated钩子函数 
+  // activated () {// 由于该组件使用了exclude，不再在keep-alive中被包含，所以没有了activated钩子函数
   //   window.addEventListener('scroll', this.handleScroll)
   // },
   // deactivated () {

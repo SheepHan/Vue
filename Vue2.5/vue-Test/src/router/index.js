@@ -19,5 +19,8 @@ export default new Router({
     path: '/detail/:id',
     name: 'Detail',
     component: Detail
-  }]
+  }],
+  scrollBehavior (to, from, savedPosition) { // vue-router的滚动行为，每次进入子页都自动回到顶部
+    return { x: 0, y: 0 }
+  }
 })
