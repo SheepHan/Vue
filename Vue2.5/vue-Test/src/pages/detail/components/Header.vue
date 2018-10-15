@@ -47,10 +47,10 @@ export default {
   //   window.removeEventListener('scroll', this.handleScroll)
   // }
   mounted () {
-    window.addEventListener('scroll', this.handleScroll, false)
+    window.addEventListener('scroll', this.handleScroll)
   },
   unmounted () {
-    window.removeEventListener('scroll', this.handleScroll, false)
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
