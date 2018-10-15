@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     handleScroll () {
-      const top = document.documentElement.scrollTop
+      const top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
       console.log(111)
       if (top > 60) {
         let opacity = top / 140
@@ -47,10 +47,10 @@ export default {
   //   window.removeEventListener('scroll', this.handleScroll)
   // }
   mounted () {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll, false)
   },
   unmounted () {
-    window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll, false)
   }
 }
 </script>
