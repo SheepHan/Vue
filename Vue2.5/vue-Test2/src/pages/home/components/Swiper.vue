@@ -2,7 +2,7 @@
   <div class="wrapper">
     <swiper :options="swiperOption">
       <!-- slides -->
-      <swiper-slide style="opacity: 1;"></swiper-slide>
+      <swiper-slide style="opacity: 1;" v-for="item in list" :key="item.id"><img :src="item.imgUrl" alt="" class="swiper-img"></swiper-slide>
       <!-- Optional controls -->
       <div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
@@ -30,17 +30,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.wrapper{
-  overflow: hidden;
-  height: 0;
-  padding-bottom: 26.67%;
-  .swiper-img{
-    display: block;
-    width: 100%;
-}
-.swiper-pagination-bullet-active{
+<style lang="stylus" scoped>
+.wrapper >>> .swiper-pagination-bullet-active
   background: #fff
-  }
-}
+.wrapper
+  overflow: hidden
+  height: 0
+  padding-bottom: 26.67%
+  .swiper-img
+    display: block
+    width: 100%
 </style>
