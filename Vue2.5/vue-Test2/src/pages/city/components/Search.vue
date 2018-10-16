@@ -10,13 +10,12 @@
       >
       <ul>
         <li class="search-item border-bottom"
-            v-for="item of list"
-            :key="item.id"
-            @click="handleCityClick(item.name)"
-            >
+          v-for="item in list"
+          :key="item.id"
+        >
           {{item.name}}
         </li>
-        <li class="search-item border-bottom" v-show="hasNoData">
+        <li class="search-item border-bottom" v-show="hasNodata">
           没有找到匹配数据
         </li>
       </ul>
@@ -26,7 +25,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
-import { mapMutations } from 'vuex'
+// import { mapMutations } from 'vuex'
 export default {
   name: 'CitySearch',
   props: {
@@ -40,16 +39,9 @@ export default {
     }
   },
   methods: {
-    handleCityClick (city) {
-      // this.$store.commit('changeCity', city) //通过引入的mapMutations简化代码，如下
-      this.changeCity(city)
-      this.keyword = ''
-      this.$router.push({path: '/'})
-    },
-    ...mapMutations(['changeCity'])
   },
   watch: {
-    keyword () {
+    keyword () { // 搜索
       if (this.timer) {
         clearTimeout(this.timer)
       }
@@ -60,9 +52,9 @@ export default {
       this.timer = setTimeout(() => {
         const result = []
         for (let i in this.city) {
-          this.city[i].forEach((value) => {
-            if (value.spell.indexOf(this.keyword) > -1 || value.name.indexOf(this.keyword) > -1) {
-              result.push(value)
+          this.city[i].forEach((item) => {
+            if (item.spell.indexOf(this.keyword) > -1 || item.name.indexOf(this.keyword) > -1) {
+              result.push(item)
             }
           })
         }
@@ -74,7 +66,7 @@ export default {
     this.scroll = new Bscroll(this.$refs.search)
   },
   computed: {
-    hasNoData () {
+    hasNodata () {
       return !this.list.length
     }
   }
