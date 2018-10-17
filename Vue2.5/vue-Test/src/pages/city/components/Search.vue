@@ -39,15 +39,6 @@ export default {
       timer: null
     }
   },
-  methods: {
-    handleCityClick (city) {
-      // this.$store.commit('changeCity', city) //通过引入的mapMutations简化代码，如下
-      this.changeCity(city)
-      this.keyword = ''
-      this.$router.push({path: '/'})
-    },
-    ...mapMutations(['changeCity'])
-  },
   watch: {
     keyword () {
       if (this.timer) {
@@ -69,6 +60,15 @@ export default {
         this.list = result
       }, 100)
     }
+  },
+  methods: {
+    handleCityClick (city) {
+      // this.$store.commit('changeCity', city) //通过引入的mapMutations简化代码，如下
+      this.changeCity(city)
+      this.keyword = ''
+      this.$router.push({path: '/'})
+    },
+    ...mapMutations(['changeCity'])
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.search)
