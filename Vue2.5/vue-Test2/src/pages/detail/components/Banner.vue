@@ -23,34 +23,34 @@
 </template>
 
 <script>
-import CommonGallary from "common/gallary/Gallary";
-import FadeAnimation from "common/fade/FadeAnimation";
+import CommonGallary from 'common/gallary/Gallary'
+import FadeAnimation from 'common/fade/FadeAnimation'
 export default {
-  name: "DetailBanner",
+  name: 'DetailBanner',
   props: {
     sightName: String,
     bannerImg: String,
     gallaryImgs: Array,
     list: Array
   },
-  data() {
+  data () {
     return {
       showGallary: false
-    };
+    }
   },
   components: {
     CommonGallary,
     FadeAnimation
   },
   methods: {
-    handleGallaryClick() {
-      this.showGallary = true;
+    handleGallaryClick () {
+      this.showGallary = true
     },
-    handleGallaryClose() {
-      this.showGallary = false;
+    handleGallaryClose () {
+      this.showGallary = false
     }
   }
-};
+}
 </script>
 
 <style lang="stylus" scoped>
