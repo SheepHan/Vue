@@ -6,6 +6,7 @@
     <div
       class="header-fixed"
       v-show="showFun"
+      :style='opacityStyle'
     >
       <router-link tag="div" to="/" class="iconfont header-fixed-back">&#xe624;</router-link>
       股票详情
@@ -18,14 +19,40 @@ export default {
   name: 'DetailHeader',
   data () {
     return {
-      showFun: false
+      showFun: false,
+      opacityStyle: {
+        opacity: 0
+      }
     }
+  },
+  methods: {
+    handleScroll () {
+      const top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      console.log(top)
+      if (top > 60) {
+        let opacity = top / 140
+        opacity = opacity > 1 ? 1 : opacity
+        // this.opacityStyle = { opacity: opacity }
+        this.opacityStyle = { opacity }
+        this.showFun = true
+      } else {
+        this.showFun = false
+      }
+    }
+  },
+  activated () {
+    // 由于该组件使用了exclude，不再在keep-alive中被包含，所以没有了activated钩子函数
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  deactivated () {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-   @import '~styles/varibles.styl'
+@import '~styles/varibles.styl';
+ @import '~styles/varibles.styl'
   .header-abs
     position: absolute
     left: .2rem

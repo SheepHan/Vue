@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <detail-banner :sightName="sightName" :bannerImg="bannerImg" :gallaryImgs="gallaryImgs" :list="list"></detail-banner>
     <detail-header></detail-header>
     <detail-list :list="list"></detail-list>
