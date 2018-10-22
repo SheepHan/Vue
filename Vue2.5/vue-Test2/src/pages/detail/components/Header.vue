@@ -40,11 +40,11 @@ export default {
       }
     }
   },
-  activated () {
+  mounted () {
     // 由于该组件使用了exclude，不再在keep-alive中被包含，所以没有了activated钩子函数
     window.addEventListener('scroll', this.handleScroll)
   },
-  deactivated () {
+  unmounted () {
     window.removeEventListener('scroll', this.handleScroll)
   }
 }

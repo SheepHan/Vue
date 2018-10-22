@@ -23,16 +23,19 @@ export default {
       sightName: '',
       bannerImg: '',
       gallaryImgs: [],
-      list: []
+      list: [],
+      lastId: ''
     }
   },
   methods: {
     getDetailInfo () {
-      axios.get('/api/detail.json', {
-        params: {
-          id: this.$route.params.id // 通过这个取到home页header中router-link中的路径id
-        }
-      }).then(this.getDetailInfoSucc)
+      axios
+        .get('/api/detail.json', {
+          params: {
+            id: this.$route.params.id // 通过这个取到home页header中router-link中的路径id
+          }
+        })
+        .then(this.getDetailInfoSucc)
     },
     getDetailInfoSucc (res) {
       res = res.data
@@ -46,12 +49,22 @@ export default {
     }
   },
   mounted () {
-    this.getDetailInfo()
+    if (this.lastId !== this.$route.params.id) {
+      this.getDetailInfo()
+      this.lastId = this.$route.params.id
+    }
   }
+  // activated () { // 由于使用了keep-alive缓存了数据，需要在其暴露的activated中进行id判断，当是新id时候，需要重新载入新界面
+  //   if (this.lastId !== this.$route.params.id) {
+  //     this.getDetailInfo()
+  //     this.lastId = this.$route.params.id
+  //   }
+  // }
 }
 </script>
 
 <style lang="stylus" scoped>
-  .content
-    height: 50rem
+.content {
+  height: 50rem
+}
 </style>
