@@ -19,7 +19,7 @@ Vue.use(VueAwesomeSwiper)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
+  router,//ceshi
   store,
   components: { App },
   template: '<App/>'
