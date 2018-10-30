@@ -49,17 +49,14 @@ export default {
     }
   },
   mounted () {
+    this.getDetailInfo()
+  },
+  activated () { // 由于使用了keep-alive缓存了数据，需要在其暴露的activated中进行id判断，当是新id时候，需要重新载入新界面
     if (this.lastId !== this.$route.params.id) {
       this.getDetailInfo()
       this.lastId = this.$route.params.id
     }
   }
-  // activated () { // 由于使用了keep-alive缓存了数据，需要在其暴露的activated中进行id判断，当是新id时候，需要重新载入新界面
-  //   if (this.lastId !== this.$route.params.id) {
-  //     this.getDetailInfo()
-  //     this.lastId = this.$route.params.id
-  //   }
-  // }
 }
 </script>
 
